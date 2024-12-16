@@ -48,9 +48,3 @@ This project is a simple web-based Vehicle Management System built with React an
    ```bash
    npm run dev
    ```
-
-How to Use
-Add Vehicle: Fill in the vehicle name and select its status (Active or Inactive), then click "Add Vehicle".
-Edit Vehicle: Click on the "Edit" button next to a vehicle in the list to open the edit form and make changes.
-Delete Vehicle: Click on the "Delete" button next to a vehicle to remove it from the list.
-Real-time Updates: Any changes made to the vehicle list will immediately reflect in the UI without needing to refresh the page.
