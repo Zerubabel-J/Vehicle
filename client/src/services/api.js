@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+// const API_URL = "http://localhost:5000/api";
+const API_URL = "https://vehicle-8tdh.onrender.com/api";
 
 export const fetchVehicles = async () => {
   const response = await axios.get(`${API_URL}/vehicles`);
