@@ -4,6 +4,7 @@ import VehicleTable from "../components/VehicleTable";
 import AddVehicleForm from "../components/AddVehicleForm";
 import { Box, Container, Modal, Typography } from "@mui/material";
 import UpdateVehicleForm from "../components/UpdateVehicleForm";
+import Loader from "../components/Loader";
 
 const Dashboard = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -55,6 +56,8 @@ const Dashboard = () => {
   return (
     <Container>
       <AddVehicleForm loadData={loadData} />
+      {vehicles.length === 0 && <Loader />}
+
       <VehicleTable
         vehicles={vehicles}
         onDelete={handleDelete}
