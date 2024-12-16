@@ -23,18 +23,27 @@ exports.addVehicle = async (req, res) => {
 
 // Update vehicle status
 exports.updateVehicle = async (req, res) => {
+  const { name, status } = req.body;
+
   try {
-    const { id } = req.params;
-    const updatedVehicle = await Vehicle.findByIdAndUpdate(id, req.body, {
-      new: true,
+    const vehicle = await Vehicle.findById(req.params.id);
+    if (!vehicle) {
+      return res.status(404).json({ message: "Vehicle not found" });
+    }
+    if (name) vehicle.name = name;
+    if (status) vehicle.status = status;
+    console.log(vehicle);
+    const updatedVehicle = await vehicle.save();
+
+    res.json({
+      ...updatedVehicle.toObject(),
+      updatedAt: updatedVehicle.updatedAt,
     });
-    res.status(200).json(updatedVehicle);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Error updating vehicle", error });
   }
 };
 
-// Delete a vehicle
 exports.deleteVehicle = async (req, res) => {
   try {
     const { id } = req.params;
